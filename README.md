@@ -1,4 +1,4 @@
-# Cyber Qt5 Plugins
+# Cyber Qt Plugins
 
 Unify Qt application style of CyberOS.
 
@@ -18,4 +18,4 @@ sudo make install
 
 ## License
 
-cyber-qt5-plugins is licensed under GPLv3.
+cyber-qt-plugins is licensed under GPLv3.
