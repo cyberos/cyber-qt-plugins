@@ -28,10 +28,10 @@ static const QByteArray s_darkIconName = QByteArrayLiteral("Lucia-dark");
 
 HintsSettings::HintsSettings(QObject *parent)
     : QObject(parent),
-      m_settings(new QSettings(QSettings::UserScope, "panda", "theme"))
+      m_settings(new QSettings(QSettings::UserScope, "cyberos", "theme"))
 {
     m_hints[QPlatformTheme::SystemIconThemeName] = darkMode() ? s_darkIconName : s_lightIconName;
-    m_hints[QPlatformTheme::StyleNames] = "panda";
+    m_hints[QPlatformTheme::StyleNames] = "cyber";
     m_hints[QPlatformTheme::SystemIconFallbackThemeName] = QStringLiteral("hicolor");
     m_hints[QPlatformTheme::IconThemeSearchPaths] = xdgIconThemePaths();
     m_hints[QPlatformTheme::UseFullScreenForPopupMenu] = false;
