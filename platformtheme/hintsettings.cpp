@@ -23,8 +23,8 @@ static const QByteArray s_systemFontName = QByteArrayLiteral("Font");
 static const QByteArray s_systemFixedFontName = QByteArrayLiteral("FixedFont");
 static const QByteArray s_systemPointFontSize = QByteArrayLiteral("FontSize");
 static const QByteArray s_darkModeName = QByteArrayLiteral("DarkMode");
-static const QByteArray s_lightIconName = QByteArrayLiteral("Lucia");
-static const QByteArray s_darkIconName = QByteArrayLiteral("Lucia-dark");
+static const QByteArray s_lightIconName = QByteArrayLiteral("Crule");
+static const QByteArray s_darkIconName = QByteArrayLiteral("Crule-dark");
 
 HintsSettings::HintsSettings(QObject *parent)
     : QObject(parent),
@@ -89,6 +89,8 @@ bool HintsSettings::darkMode()
 
 void HintsSettings::onFileChanged(const QString &path)
 {
+    Q_UNUSED(path);
+
     QVariantMap map;
     for (const QString &value : m_settings->allKeys()) {
         map[value] = m_settings->value(value);

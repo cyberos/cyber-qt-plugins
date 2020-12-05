@@ -36,6 +36,10 @@ public:
     }
 
 private:
+    void onFontChanged();
+    void onIconThemeChanged();
+
+private:
     HintsSettings *m_hints;
     QScopedPointer<X11Integration> m_x11Integration;
 };

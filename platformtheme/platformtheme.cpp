@@ -39,39 +39,7 @@ static bool isDBusGlobalMenuAvailable()
     return dbusGlobalMenuAvailable;
 }
 
-static void onFontChanged()
-{
-    if (QGuiApplicationPrivate::app_font)
-        delete QGuiApplicationPrivate::app_font;
-
-    QGuiApplicationPrivate::app_font = nullptr;
-    QEvent event(QEvent::ApplicationFontChange);
-    qApp->sendEvent(qApp, &event);
-
-    for (QWindow *window : qGuiApp->allWindows()) {
-        if (window->type() == Qt::Desktop)
-            continue;
-
-        qApp->sendEvent(window, &event);
-    }
-
-    Q_EMIT qGuiApp->fontChanged(qGuiApp->font());
-}
-
 extern void updateXdgIconSystemTheme();
-static void onIconThemeChanged()
-{
-    QIconLoader::instance()->updateSystemTheme();
-    updateXdgIconSystemTheme();
-
-    QEvent update(QEvent::UpdateRequest);
-    for (QWindow *window : qGuiApp->allWindows()) {
-        if (window->type() == Qt::Desktop)
-            continue;
-
-        qApp->sendEvent(window, &update);
-    }
-}
 
 void onDarkModeChanged()
 {
@@ -91,9 +59,9 @@ PlatformTheme::PlatformTheme()
         m_x11Integration->init();
     }
 
-    connect(m_hints, &HintsSettings::systemFontChanged, &onFontChanged);
-    connect(m_hints, &HintsSettings::systemFontPointSizeChanged, &onFontChanged);
-    connect(m_hints, &HintsSettings::iconThemeChanged, &onIconThemeChanged);
+    connect(m_hints, &HintsSettings::systemFontChanged, this, &PlatformTheme::onFontChanged);
+    connect(m_hints, &HintsSettings::systemFontPointSizeChanged, this, &PlatformTheme::onFontChanged);
+    connect(m_hints, &HintsSettings::iconThemeChanged, this, &PlatformTheme::onIconThemeChanged);
     connect(m_hints, &HintsSettings::darkModeChanged, &onDarkModeChanged);
 
     QCoreApplication::setAttribute(Qt::AA_DontUseNativeMenuBar, false);
@@ -175,4 +143,31 @@ QPlatformMenuBar *PlatformTheme::createPlatformMenuBar() const
     }
 
     return nullptr;
+}
+
+void PlatformTheme::onFontChanged()
+{
+    QFont font;
+    font.setFamily(m_hints->systemFont());
+    font.setPointSizeF(m_hints->systemFontPointSize());
+
+    // Change font
+    if (qobject_cast<QApplication *>(QCoreApplication::instance()))
+        QApplication::setFont(font);
+    else if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()))
+        QGuiApplication::setFont(font);
+}
+
+void PlatformTheme::onIconThemeChanged()
+{
+    QIconLoader::instance()->updateSystemTheme();
+    updateXdgIconSystemTheme();
+
+    QEvent update(QEvent::UpdateRequest);
+    for (QWindow *window : qGuiApp->allWindows()) {
+        if (window->type() == Qt::Desktop)
+            continue;
+
+        qApp->sendEvent(window, &update);
+    }
 }
