@@ -34,9 +34,9 @@
 
 #include <KWindowSystem>
 
-const char netWMSkipShadow[] = "_PANDA_NET_WM_SKIP_SHADOW";
-const char netWMForceShadow[] = "_PANDA_NET_WM_FORCE_SHADOW";
-const char netWMFrameRadius[] = "_PANDA_NET_WM_FRAME_RADIUS";
+const char netWMSkipShadow[] = "_CYBER_NET_WM_SKIP_SHADOW";
+const char netWMForceShadow[] = "_CYBER_NET_WM_FORCE_SHADOW";
+const char netWMFrameRadius[] = "_CYBER_NET_WM_FRAME_RADIUS";
 
 enum {
     ShadowNone,
