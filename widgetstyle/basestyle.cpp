@@ -3198,9 +3198,9 @@ QPalette BaseStyle::lightModePalette()
 QPalette BaseStyle::darkModePalette()
 {
     QPalette palette;
-    palette.setColor(QPalette::Active, QPalette::Window, QRgb(0x3B3B3D));
-    palette.setColor(QPalette::Inactive, QPalette::Window, QRgb(0x404042));
-    palette.setColor(QPalette::Disabled, QPalette::Window, QRgb(0x424242));
+    palette.setColor(QPalette::Active, QPalette::Window, QRgb(0x252525));
+    palette.setColor(QPalette::Inactive, QPalette::Window, QRgb(0x252525));
+    palette.setColor(QPalette::Disabled, QPalette::Window, QRgb(0x252525));
 
     palette.setColor(QPalette::Active, QPalette::WindowText, QRgb(0xCACBCE));
     palette.setColor(QPalette::Inactive, QPalette::WindowText, QRgb(0xC8C8C6));
@@ -3220,13 +3220,13 @@ QPalette BaseStyle::darkModePalette()
     palette.setColor(QPalette::Inactive, QPalette::BrightText, QRgb(0x2D2D2F));
     palette.setColor(QPalette::Disabled, QPalette::BrightText, QRgb(0x333333));
 
-    palette.setColor(QPalette::Active, QPalette::Base, QRgb(0x27272A));
-    palette.setColor(QPalette::Inactive, QPalette::Base, QRgb(0x2A2A2D));
-    palette.setColor(QPalette::Disabled, QPalette::Base, QRgb(0x343437));
+    palette.setColor(QPalette::Active, QPalette::Base, QRgb(0x151515));
+    palette.setColor(QPalette::Inactive, QPalette::Base, QRgb(0x151515));
+    palette.setColor(QPalette::Disabled, QPalette::Base, QRgb(0x151515));
 
-    palette.setColor(QPalette::Active, QPalette::AlternateBase, QRgb(0x2C2C30));
-    palette.setColor(QPalette::Inactive, QPalette::AlternateBase, QRgb(0x2B2B2F));
-    palette.setColor(QPalette::Disabled, QPalette::AlternateBase, QRgb(0x36363A));
+    palette.setColor(QPalette::Active, QPalette::AlternateBase, QRgb(0x151515));
+    palette.setColor(QPalette::Inactive, QPalette::AlternateBase, QRgb(0x151515));
+    palette.setColor(QPalette::Disabled, QPalette::AlternateBase, QRgb(0x151515));
 
     palette.setColor(QPalette::All, QPalette::ToolTipBase, QRgb(0x3B3B3D));
     palette.setColor(QPalette::All, QPalette::ToolTipText, QRgb(0xCACBCE));
